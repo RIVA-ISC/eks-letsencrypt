@@ -20,8 +20,8 @@ module "eks" {
     }
   ]
 
-  worker_groups = var.worker_groups
-  # map_roles        = var.map_roles
+  worker_groups    = var.worker_groups
+  map_roles        = var.eks_map_roles
   map_users        = var.eks_map_users
   write_kubeconfig = false
 
