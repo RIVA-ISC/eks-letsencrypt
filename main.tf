@@ -14,7 +14,7 @@ provider "helm" {
 
 locals {
   name = "ssl-test"
-  cidr = "10.10.10.0/24"
+  cidr = "10.0.0.0/16"
 }
 
 data "aws_availability_zones" "available" {
