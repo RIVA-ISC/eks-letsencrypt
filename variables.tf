@@ -5,7 +5,7 @@ variable "aws_region" {
 }
 
 variable "dns_zone" {
-  type        = string
+  type = string
 }
 
 variable "access_key" {
