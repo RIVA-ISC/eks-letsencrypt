@@ -12,7 +12,7 @@ data "kubernetes_service" "ingress_nginx" {
 data "kubernetes_service" "k8s_dashboard" {
   metadata {
     name      = "k8s-dashboard-kubernetes-dashboard"
-    namespace = "spinnaker"
+    namespace = "default"
   }
 
   depends_on = [
@@ -26,7 +26,7 @@ resource "kubernetes_ingress" "grafana" {
 
   metadata {
     name      = "grafana"
-    namespace = "opencloudcx"
+    namespace = "default"
 
     annotations = {
       "kubernetes.io/ingress.class"    = "nginx"
