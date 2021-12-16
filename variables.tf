@@ -57,3 +57,21 @@ variable "worker_groups" {
   ]
 }
 
+variable "ingress_helm_repo" {
+  description = "URL for Ingress Controller helm chart"
+  type        = string
+  default     = "https://kubernetes.github.io/ingress-nginx"
+}
+
+variable "grafana_helm_repo" {
+  description = "URL for grafana helm chart repository"
+  type        = string
+  default     = "https://grafana.github.io/helm-charts"
+}
+
+variable "grafana_helm_chart_version" {
+  description = "Version for grafana helm chart"
+  type        = string
+  default     = "6.17.5"
+}
+
