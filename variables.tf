@@ -4,6 +4,10 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "dns_zone" {
+  type        = string
+}
+
 variable "access_key" {
   description = "AWS access key"
   type        = string
@@ -42,6 +46,16 @@ variable "eks_map_users" {
   default = []
 }
 
+variable "eks_map_roles" {
+  description = "Additional IAM roles to add to the aws-auth configmap"
+  type = list(object({
+    rolearn  = string
+    username = string
+    groups   = list(string)
+  }))
+  default = []
+}
+
 variable "worker_groups" {
   type = list(object({
     name                 = string
@@ -73,5 +87,17 @@ variable "grafana_helm_chart_version" {
   description = "Version for grafana helm chart"
   type        = string
   default     = "6.17.5"
+}
+
+variable "k8s_dashboard_helm_repo" {
+  description = "A repository url of helm chart to deploy k8s dashboard"
+  type        = string
+  default     = "https://kubernetes.github.io/dashboard/"
+}
+
+variable "k8s_dashboard_helm_chart_version" {
+  description = "Helm chart version for k8s_dashboard"
+  type        = string
+  default     = "5.0.3"
 }
 
