@@ -4,7 +4,6 @@ provider "aws" {
   secret_key = var.secret_key
 }
 
-
 provider "helm" {
   kubernetes {
     host                   = data.aws_eks_cluster.cluster.endpoint
