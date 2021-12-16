@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver-depl
+spec:
+  selector:
+    matchLabels:
+      app: webserver-app
+  template:
+    metadata:
+      labels:
+        app: webserver-app
+    spec:
+      containers:
+        - name: webserver-app
+          image: nginx:1.8
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver-svc
+spec:
+  selector:
+    app: webserver-app
+  ports:
+    - name: webserver-app
+      protocol: TCP
+      port: 80
+      targetPort: 80
