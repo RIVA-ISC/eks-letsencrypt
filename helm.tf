@@ -53,7 +53,42 @@ resource "helm_release" "grafana" {
     value = "ClusterIP"
   }
 
- depends_on = [
+  depends_on = [
+    module.eks,
+  ]
+}
+
+resource "helm_release" "k8s_dashboard" {
+  name             = "k8s-dashboard"
+  chart            = "kubernetes-dashboard"
+  namespace        = "default"
+  repository       = var.k8s_dashboard_helm_repo
+  timeout          = var.helm_timeout
+  version          = var.k8s_dashboard_helm_chart_version
+  create_namespace = false
+  reset_values     = false
+
+  set {
+    name  = "settings.itemsPerPage"
+    value = 30
+  }
+
+  set {
+    name  = "ingress.enabled"
+    value = true
+  }
+
+  set {
+    name  = "service.type"
+    value = "LoadBalancer"
+  }
+
+  set {
+    name  = "settings.clusterName"
+    value = "SSL-TEST"
+  }
+
+  depends_on = [
     module.eks,
   ]
 }
