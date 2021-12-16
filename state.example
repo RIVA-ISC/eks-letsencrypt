@@ -1,0 +1,11 @@
+# rename to state.tf
+
+terraform {
+  backend "s3" {
+    key        = "eks-letsencrypt"
+    bucket     = "eks-letsencrypt-state-bucket-7268"
+    region     = "us-east-1"
+    access_key = "<access key>"
+    secret_key = "<secret key>"
+  }
+}
